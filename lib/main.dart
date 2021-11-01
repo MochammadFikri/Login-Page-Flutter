@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }
@@ -108,7 +113,89 @@ class MainPage extends StatelessWidget {
                                     TextStyle(color: Color(0xFFFF4891))),
                           )
                         ],
-                      ))
+                      )),
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 20, 20),
+                        child: Text(
+                          "Forgot Password?",
+                          style:
+                              TextStyle(color: Color(0xFFFF4891), fontSize: 11),
+                        ),
+                      )),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 0, 20, 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: 40,
+                          child: Container(
+                            child: Material(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.transparent,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(20),
+                                splashColor: Colors.amber,
+                                onTap: () {},
+                                child: Center(
+                                  child: Text(
+                                    "Sign In",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xffB226B2),
+                                      Color(0xFFFF4891)
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter)),
+                          ),
+                        ),
+                        FloatingActionButton(
+                          onPressed: () {},
+                          mini: true,
+                          elevation: 0,
+                          child:
+                              Image(image: AssetImage("assets/facebook.png")),
+                        ),
+                        FloatingActionButton(
+                          onPressed: () {},
+                          mini: true,
+                          elevation: 0,
+                          child: Image(image: AssetImage("assets/twitter.png")),
+                        )
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "Don't Have An Account?",
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        "SIGN UP",
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Color(0xFFFF4891),
+                            fontWeight: FontWeight.w700),
+                      )
+                    ],
+                  ),
                 ],
               ),
             )
